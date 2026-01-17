@@ -11,15 +11,25 @@ const statusFilter = document.getElementById("statusFilter");
 const categoryFilter = document.getElementById("categoryFilter");
 const clearFiltersBtn = document.getElementById("clearFiltersBtn");
 
-let tasks = []; // tasks array
-const STORAGE_KEY = "task_manager_tasks"; //key to the local storage
+let tasks = [];
+const STORAGE_KEY = "task_manager_tasks";
 
-
-//save Tasks to local Storage
-function saveTasksToLocalStorage(){
-    localStorage.setItem(STORAGE_KEY, tasks); //key and value for the storage
+// SAVE
+function saveTasksToLocalStorage() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
 }
 
+// LOAD
+function loadTasksFromLocalStorage() {
+  const data = localStorage.getItem(STORAGE_KEY);
+  if (data) {
+    tasks = JSON.parse(data);
+  }
+}
+
+function createId() {
+  return Date.now() + Math.floor(Math.random() * 1000);
+}
 
 function addTask() {
   const name = taskNameInput.value.trim();
@@ -27,40 +37,31 @@ function addTask() {
   const deadline = taskDeadlineInput.value;
   const status = taskStatusSelect.value;
 
-  
-  if (name === "") {
-    alert("Please enter a task name.");
+  if (name === "" || category === "") {
+    alert("Please fill out all fields");
     return;
   }
 
-  if (category === "") {
-    alert("Please enter a category.");
-    return;
-  }
-
-  // Create task object
   const newTask = {
     id: createId(),
-    name: name,
-    category: category,
-    deadline: deadline,
-    status: status
+    name,
+    category,
+    deadline,
+    status
   };
-    tasks.push(newTask);
 
-  // Save and re-render
+  tasks.push(newTask);
   saveTasksToLocalStorage();
-  // Clear inputs
+
   taskNameInput.value = "";
   taskCategoryInput.value = "";
   taskDeadlineInput.value = "";
   taskStatusSelect.value = "In Progress";
 }
-//creates unique id to the object in storage
-function createId() {
-  return Date.now() + Math.floor(Math.random() * 1000);
-}
 
 addTaskBtn.addEventListener("click", addTask);
 
-console.log(localStorage)
+// Load tasks when page opens
+loadTasksFromLocalStorage();
+
+console.log(tasks);
