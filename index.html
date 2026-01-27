@@ -1,40 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Management</title>
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1> Task Managment App</h1>
-        
-        <div class="form-row">
-          <label for="taskName">Task Name</label>
-          <input id="taskName" type="text" placeholder="e.g., Finish homework" />
-        </div>
+      <h1>Task Managment App</h1>
 
-        <div class="form-row">
-          <label for="taskCategory">Category</label>
-          <input id="taskCategory" type="text" placeholder="e.g., Work, School, Home" />
-        </div>
+      <div class="form-row">
+        <label>Task Name</label>
+        <input id="taskName" type="text" />
+      </div>
 
-         <div class="form-row">
-          <label for="taskDeadline">Deadline</label>
-          <input id="taskDeadline" type="date" />
-        </div>
+      <div class="form-row">
+        <label>Category</label>
+        <input id="taskCategory" type="text" />
+      </div>
 
-        <div class="form-row">
-          <label for="taskStatus">Initial Status</label>
-          <select id="taskStatus">
-            <option value="In Progress">In Progress</option>
-            <option value="Completed">Completed</option>
-          </select>
-        </div>
-        <button id="addTaskBtn">Add Task</button>
+      <div class="form-row">
+        <label>Deadline</label>
+        <input id="taskDeadline" type="date" />
+      </div>
+
+     <div class="form-row">
+      <label>Status</label>
+      <select id="taskStatus">
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+    <button id="addTaskBtn">Add Task</button>
+    </div>
+
+     <div class="filters">
+      <select id="statusFilter">
+        <option value="All">All Statuses</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="Overdue">Overdue</option>
+      </select>
+
+      <input id="categoryFilter" placeholder="Filter by category" />
+      <button id="clearFiltersBtn">Clear Filters</button>
     </div>
 
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
