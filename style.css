@@ -79,13 +79,6 @@ table {
   margin-top: 12px;
 }
 
-th,
-td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 10px;
-  text-align: left;
-  font-size: 14px;
-}
 
 .status-pill {
   display: inline-block;
